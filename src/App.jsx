@@ -3,20 +3,18 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Form from "./pages/form/Form";
 import { Routes, Route, Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ children, auth = false }) => {
-  const isLoggedIn = localStorage.getItem("user:token") !== null || true;
+const ProtectedRoute = ({ children, auth=false }) => {
+  const isLoggedIn = localStorage.getItem('user:token') !== null || false;
 
-  if (!isLoggedIn && auth) {
-    return <Navigate to={"/users/sign_in"} />;
-  } else if (
-    isLoggedIn &&
-    ["/users/sign_in", "/users/sign_up"].includes(window.location.pathname)
-  ) {
-    return <Navigate to={"/"} />;
-  } 
+  if(!isLoggedIn && auth) {
+    return <Navigate to={'/users/sign_in'} />
+  }else if(isLoggedIn && ['/users/sign_in', '/users/sign_up'].includes(window.location.pathname)){
+    // console.log('object :>> ');
+    return <Navigate to={'/'} />
+  }
 
-  return children;
-};
+  return children
+}
 
 function App() {
   return (

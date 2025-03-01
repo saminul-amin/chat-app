@@ -14,8 +14,9 @@ const Form = ({ isSignInPage = true }) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    console.log("data :>> ", data);
     e.preventDefault();
+    // console.log(e.target.value);
+    console.log("data :>> ", data);
     const res = await fetch(
       `http://localhost:5000/api/${isSignInPage ? "login" : "register"}`,
       {
@@ -54,7 +55,7 @@ const Form = ({ isSignInPage = true }) => {
           {!isSignInPage && (
             <Input
               label="Full name"
-              name="name"
+              name="fullName"
               placeholder="Enter your full name"
               className="mb-6 w-[75%]"
               value={data.fullName}
@@ -87,7 +88,12 @@ const Form = ({ isSignInPage = true }) => {
         </form>
         <div>
           {isSignInPage ? "Didn't have an account?" : "Alredy have an account?"}{" "}
-          <span className=" text-primary cursor-pointer underline">
+          <span
+            className=" text-primary cursor-pointer underline"
+            onClick={() =>
+              navigate(`/users/${isSignInPage ? "sign_up" : "sign_in"}`)
+            }
+          >
             {isSignInPage ? "Sign up" : "Sign in"}
           </span>
         </div>

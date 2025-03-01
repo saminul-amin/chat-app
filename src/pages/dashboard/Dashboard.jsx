@@ -108,7 +108,7 @@ const Dashboard = () => {
 
   return (
     <div className="w-screen flex">
-      <div className="w-[25%] h-screen bg-secondary overflow-scroll">
+      <div className="w-[25%] h-screen bg-secondary overflow-y-scroll">
         <div className="flex items-center my-8 mx-14">
           <div>
             <img
@@ -194,7 +194,7 @@ const Dashboard = () => {
             </div>
           </div>
         )}
-        <div className="h-[75%] w-full overflow-scroll shadow-sm">
+        <div className="h-[75%] w-full overflow-y-scroll shadow-sm">
           <div className="p-14">
             {messages?.messages?.length > 0 ? (
               messages.messages.map(({ message, user: { id } = {} }) => {
